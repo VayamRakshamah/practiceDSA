@@ -1,0 +1,22 @@
+HASHMAP PATTERNS
+-----------------------------------------------
+PATTERN 1 - Frequency Map:
+char_count = {}
+for char in string:
+    char_count[char] = char_count.get(char, 0) + 1
+-----------------------------------------------
+PATTERN 2 - Check existence:
+seen = set()
+if element in seen: return True
+seen.add(element)
+-----------------------------------------------
+PATTERN 3 - Index tracking:
+last_index = {}
+for i, elem in enumerate(array):
+    if elem in last_index:
+        # Handle duplicate
+    last_index[elem] = i
+------------------------------------------------
+PATTERN 4 - Value mapping:
+mapping = {char: count for char, count in char_count.items()}
+------------------------------------------------

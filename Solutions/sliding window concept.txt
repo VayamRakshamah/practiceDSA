@@ -1,0 +1,15 @@
+WHAT: Move a window across array, track result at each position
+WHEN: Subarray/substring problems, "maximum/minimum within window"
+TIME: O(n) instead of O(n²)
+
+PATTERN:
+1. Initialize window: left = 0
+2. For right pointer in range(len(arr)):
+   - Expand window: add arr[right] to window
+   - Shrink window: while condition not met, remove arr[left], left += 1
+   - Record result at each valid window
+3. Return best result
+
+EXAMPLE: "Find longest substring without repeating characters"
+- Window contracts/expands based on repeated character
+- At each point, we have valid window of unique chars
