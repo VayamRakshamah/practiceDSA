@@ -1,0 +1,20 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        Set<List<Integer>> result = new HashSet<>();
+        for(int i = 0; i < nums.length; i++){
+          if (nums[i] > 0) break;
+          if (i > 0 && nums[i] == nums[i - 1]) continue;
+          Map<Integer,Integer> numMap = new HashMap<>();
+
+          for (int j = i + 1; j < nums.length; j++){
+                int complement = -nums[i]-nums[j];
+                if(numMap.containsKey(complement)){
+                    result.add(Arrays.asList(nums[i],complement,nums[j]));
+                }
+                numMap.put(nums[j],j);
+            }  
+        }
+        return new ArrayList<>(result);
+    }
+}
