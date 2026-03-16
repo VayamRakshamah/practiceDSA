@@ -1,0 +1,17 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+    int minPrice = Integer.MAX_VALUE; 
+    int maxProfit = 0;
+
+    for (int price : prices) {
+        if (price < minPrice) {
+            // Found a new "cheapest" day to buy
+            minPrice = price; 
+        } else if (price - minPrice > maxProfit) {
+            // Found a better day to sell relative to our cheapest buy day
+            maxProfit = price - minPrice;
+        }
+    }
+    return maxProfit;
+    }
+}
