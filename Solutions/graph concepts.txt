@@ -1,0 +1,32 @@
+GRAPH BASICS:
+
+REPRESENTATION: Adjacency List: Map<Node, List> - Most common Adjacency Matrix: 2D array [i][j] - Less memory efficient
+
+TRAVERSALS: DFS (Recursion-based): Go deep, use Stack (recursion stack) BFS (Queue-based): Go level-by-level, use explicit Queue
+
+COMMON PROBLEMS:
+
+Connected Components: How many separate clusters?
+Cycle Detection: Does cycle exist?
+Topological Sort: Order of tasks with dependencies
+Shortest Path: Minimum edges from A to B
+GRAPH VS TREE: Tree: DAG (directed acyclic graph), no cycles Graph: Can have cycles, can have multiple paths
+
+----------
+
+
+DFS on Graphs Template
+
+// Standard DFS template
+Set<Integer> visited = new HashSet<>();
+
+void dfs(Node node, Map<Node, List<Node>> graph) {
+    if (visited.contains(node)) return; // Base case: already visited
+    
+    visited.add(node); // Mark as visited
+    // Process node
+    
+    for (Node neighbor : graph.get(node)) {
+        dfs(neighbor, graph); // Recurse
+    }
+}

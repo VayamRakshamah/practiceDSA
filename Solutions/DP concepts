@@ -1,0 +1,19 @@
+WHAT IS DYNAMIC PROGRAMMING?
+
+Definition: "Solve complex problem by breaking into overlapping subproblems, store results to avoid recomputation"
+
+Key Insight: Use memoization (caching) to turn exponential to polynomial
+
+SIMPLE EXAMPLE - Fibonacci:
+
+Recursive (Inefficient - O(2^n)): fib(5) calls fib(4) + fib(3) fib(4) calls fib(3) + fib(2) fib(3) is computed TWICE!
+
+DP (Efficient - O(n)): Instead of recomputing fib(3), store it in cache Next time fib(3) needed, look up in O(1) instead of recomputing
+
+STEPS TO SOLVE DP PROBLEM:
+
+Identify overlapping subproblems
+Define subproblem: dp[i] = what?
+Find recurrence: dp[i] = function of dp[i-1], dp[i-2], etc.
+Base case: dp[0] = ?, dp[1] = ?
+Build solution bottom-up
