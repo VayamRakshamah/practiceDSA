@@ -1,0 +1,46 @@
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int size = nums.length;
+        int[] prefixSum = new int[size];
+        int[] postfixSum = new int[size];
+        prefixSum[0] = nums[0];
+        postfixSum[size-1] = nums[size-1];
+        for(int i=1;i<size;i++){
+            prefixSum[i] = prefixSum[i-1]+nums[i];
+        }
+        for(int i=size-2;i>=0;i--){
+            postfixSum[i] = postfixSum[i+1]+nums[i];
+        }
+
+        for(int i=0;i<size;i++){
+            if(prefixSum[i]==postfixSum[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+
+---------------
+
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int totalSum = 0;
+        for (int num : nums) {
+            totalSum += num;
+        }
+
+        int leftSum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int rightSum = totalSum - leftSum - nums[i];
+            if (leftSum == rightSum) {
+                return i;
+            }
+            leftSum += nums[i];
+        }
+
+        return -1;
+    }
+}
