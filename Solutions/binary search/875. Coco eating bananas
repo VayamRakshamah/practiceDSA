@@ -1,0 +1,29 @@
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        int left =1;
+        int right = Arrays.stream(piles).max().getAsInt();
+        int result = 0;
+        while(left<=right){
+            int mid = left+(right-left)/2;
+            if(canFinish(piles,h,mid)){
+                result = mid;
+                right = mid-1;
+            }
+            else{
+                left = mid+1;
+            }
+        }
+        return result;
+    }
+
+    public boolean canFinish(int[] piles, int h,int k){
+        long ceilSum=0;
+        for(int i=0;i<piles.length;i++){
+            ceilSum+= (piles[i]+k-1)/k;
+        }
+        if(ceilSum<=h){
+            return true;
+        }
+        return false;
+    }
+}
